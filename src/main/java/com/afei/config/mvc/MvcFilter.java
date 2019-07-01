@@ -28,7 +28,7 @@ public class MvcFilter implements Filter {
 
 
 
-        System.out.println("过滤器已启用");
+        //System.out.println("过滤器已启用");
 
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse rep = (HttpServletResponse) response;

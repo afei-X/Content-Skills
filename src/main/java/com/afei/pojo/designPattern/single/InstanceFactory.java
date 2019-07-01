@@ -1,4 +1,4 @@
-package com.afei.pojo.designPattern;
+package com.afei.pojo.designPattern.single;
 
 import org.springframework.stereotype.Component;
 

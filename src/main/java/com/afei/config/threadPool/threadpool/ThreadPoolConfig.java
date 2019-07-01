@@ -1,5 +1,9 @@
 package com.afei.config.threadPool.threadpool;
 
+import com.alibaba.rocketmq.common.ThreadFactoryImpl;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import org.springframework.stereotype.Component;
+
 import java.util.concurrent.*;
 
 /**
@@ -8,6 +12,7 @@ import java.util.concurrent.*;
  * @dataTime 2019-01-02
  * @descride  线程池的配置类
  */
+@Component
 public class ThreadPoolConfig {
 
 
@@ -20,22 +25,36 @@ public class ThreadPoolConfig {
     //空闲线程的活跃时间
     private static final int KEEP_ALIVE_TIME = 200;
 
-   private static BlockingQueue<Runnable> queue = new ArrayBlockingQueue<Runnable>(2);
+    private static BlockingQueue<Runnable> queue = new ArrayBlockingQueue<Runnable>(2);
+
+
+    //ThreadFactory threadFactory = new ThreadFactoryImpl("first-pool-%d");
+
+    /**
+     * Executors 的内部类
+     */
+    //ThreadFactory threadFactory = Executors.defaultThreadFactory();
+
+    private  final ThreadFactory threadFactory = new ThreadFactoryBuilder().setNameFormat("first-pool-%d").build();
+
+
+    private ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, KEEP_ALIVE_TIME,
+            TimeUnit.MILLISECONDS, queue,threadFactory);
+
+
+    public void execute(Runnable command){
+        threadPoolExecutor.execute(command);
+    }
 
 
 
-   public static void main(String[] args){
 
 
-       //ThreadFactory threadFactory = new ThreadFactoryImpl("first-pool-execute");
+    /*public static void main(String[] args){
 
-       /**
-        * Executors 的内部类
-        */
-       ThreadFactory threadFactory = Executors.defaultThreadFactory();
 
-       ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, KEEP_ALIVE_TIME,
-               TimeUnit.MILLISECONDS, queue,threadFactory);
+
+
 
 
        try {
@@ -45,7 +64,7 @@ public class ThreadPoolConfig {
                ThreadPoolRunablePojo runablePojo = new ThreadPoolRunablePojo();
                runablePojo.setCount(i);
                threadPoolExecutor.execute(runablePojo);
-               //System.out.println(threadPoolExecutor);
+
 
            }
        } finally{
@@ -61,7 +80,6 @@ public class ThreadPoolConfig {
        Thread thread = Thread.currentThread();
        try {
            thread.sleep(3000);
-           //System.out.println(thread.getName());
        } catch (InterruptedException e) {
            e.printStackTrace();
        }
@@ -72,5 +90,5 @@ public class ThreadPoolConfig {
        System.out.println("睡之后的活跃最大线程数量"+threadPoolExecutor.getLargestPoolSize());
 
 
-   }
+   }*/
 }

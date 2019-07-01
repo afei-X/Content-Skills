@@ -1,6 +1,5 @@
 package com.afei.controller;
 
-import com.afei.pojo.designPattern.InstanceFactory;
 import org.apache.poi.poifs.filesystem.DirectoryEntry;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.springframework.web.bind.annotation.GetMapping;

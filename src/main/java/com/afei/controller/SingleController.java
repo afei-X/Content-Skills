@@ -1,7 +1,7 @@
 package com.afei.controller;
 
 
-import com.afei.pojo.designPattern.InstanceFactory;
+import com.afei.pojo.designPattern.single.InstanceFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

@@ -35,4 +35,38 @@ public class ThreadDemo {
             }
         }
     }
+
+
+    /**
+     * 超时 等待/通知
+     */
+   public void delay(long millis) throws InterruptedException {
+       long remain=0;
+       long future = System.currentTimeMillis()+millis;
+
+       if (millis < 0) {
+           throw new IllegalArgumentException("timeout value is negative");
+       }
+
+       if (millis == 0) {
+           while (Thread.currentThread().isAlive()) {
+               wait(0);
+           }
+       }else{
+
+           if(Thread.currentThread().isAlive()){
+
+              long delay  = future - System.currentTimeMillis()-remain;
+               if(delay>0){
+
+                   wait(delay);
+
+                   remain=future- System.currentTimeMillis();
+               }
+           }
+
+       }
+
+   }
+
 }

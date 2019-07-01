@@ -1,4 +1,4 @@
-package com.afei.pojo.designPattern;
+package com.afei.pojo.designPattern.single;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -6,7 +6,7 @@ import java.util.Set;
 public class Single {
 
 
-    private static  Single instance=null;
+    private static volatile Single instance=null;
 
 
     private  Single(){}

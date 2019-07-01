@@ -16,8 +16,7 @@ public class StringDemo {
         String c ="vvv";
 
         System.out.println(a.hashCode());
-        System.out.println(c.hashCode()
-         );
+        System.out.println(c.hashCode());
         System.out.println(a==b);
         System.out.println(a==c);
 
