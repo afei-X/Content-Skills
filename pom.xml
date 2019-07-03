@@ -114,6 +114,12 @@
 		</dependency>
 
 
+		<dependency>
+			<groupId>com.jingdata</groupId>
+			<artifactId>jingdata-saas-login</artifactId>
+			<version>1.1-SNAPSHOT</version>
+		</dependency>
+
 
 
 

@@ -41,13 +41,14 @@ public class Winter {
 
             FirstAnnotation annotation = field.getAnnotation(FirstAnnotation.class);
 
-            field.setAccessible(true);
+            System.out.println(annotation.add());
+            /*field.setAccessible(true);
             field.set(winter,"1234");
 
-            lists.add(winter);
+            lists.add(winter);*/
         }
 
-        lists.forEach(s -> {
+        /*lists.forEach(s -> {
 
             for (Field field : fields) {
 
@@ -62,7 +63,7 @@ public class Winter {
                 }
             }
 
-        });
+        });*/
 
     }
 }

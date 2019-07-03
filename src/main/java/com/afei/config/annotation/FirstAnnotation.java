@@ -23,4 +23,6 @@ public @interface FirstAnnotation {
      String value() default "";
 
      int length() default 0;
+
+     boolean add() default false;
 }
