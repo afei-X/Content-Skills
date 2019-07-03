@@ -1,6 +1,14 @@
-package com.afei.config.aspect;
+/*
+package com.afei.config.aspect.clear;
 
-import com.afei.config.redis.RSToken;
+import com.iyd.core.vo.AppMessage;
+import com.iyd.core.vo.AppMessageCode;
+import com.iyd.domain.constant.user.UserConstant;
+import com.iyd.domain.entity.user.User;
+import imall.annotation.RSToken;
+import imall.controller.BaseController;
+import imall.util.tencent.JedisLockUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -14,20 +22,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.concurrent.TimeUnit;
 
+*/
 /**
  * Description
  * 基于切面防重复提交
+ *
  * @author thinkpad
  * @version 1.0
  * Date                 Author			Version     Description
  * ------------------------------------------------------------------
  * 2019-2-20--14:37     suyin             1.0      Version
- */
+ *//*
+
 @Aspect
 @Component
-public class RsTokenAspect {
+public class RsTokenAspect extends BaseController {
 
-    /*@Autowired
+    @Autowired
     private HttpServletRequest request;
 
     @Autowired
@@ -69,27 +80,27 @@ public class RsTokenAspect {
                 return AppMessage.error(50001);
             }
             String lockKey = UserConstant.WX_MIMI_USER_LOCK + token;
-            boolean b = jedisLockUtil.tryLock(lockKey, 1, 20);
+            String certificate = JedisLockUtil.getCertificate(RSTOKEN);
+            boolean b = jedisLockUtil.tryLockFriendly(lockKey, 1, 20, certificate);
             if (b) {
-                v = (String) redisTemplate.opsForValue().get(UserConstant.WX_MIMI_USER_SUBMIT_TOKEN + token);
-                if (null == v) {
-                    return AppMessage.error(50001);
-                } else if (v.equals(value)) {
-                    AppMessage appMessage = null;
-                    try {
+                try {
+                    v = (String) redisTemplate.opsForValue().get(UserConstant.WX_MIMI_USER_SUBMIT_TOKEN + token);
+                    if (null == v) {
+                        return AppMessage.error(50001);
+                    } else if (v.equals(value)) {
+                        AppMessage appMessage = null;
                         appMessage = (AppMessage) invocation.proceed();
                         if (appMessage != null && AppMessageCode.success.getCode() == appMessage.getCode().intValue()) {
                             clearRsToken(token);
                         }
-                    } catch (RuntimeException e) {
-                       // clearRsToken(token);
-                        throw e;
-                    } finally {
-                        jedisLockUtil.deleteLock(lockKey);
+                        return appMessage;
+                    } else {
+                        return AppMessage.error(50001);
                     }
-                    return appMessage;
-                } else {
-                    return AppMessage.error(50004);
+                } catch (Exception e) {
+                    throw e;
+                } finally {
+                    jedisLockUtil.unLockFriendly(lockKey, certificate);
                 }
             } else {
                 return AppMessage.error(50002);
@@ -97,7 +108,7 @@ public class RsTokenAspect {
 
 
         }
-        return null;
+        return invocation.proceed();
     }
 
 
@@ -113,5 +124,6 @@ public class RsTokenAspect {
         return request.getHeader(name);
     }
 
-*/
+
 }
+*/
