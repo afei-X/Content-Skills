@@ -118,6 +118,17 @@
 			<groupId>com.jingdata</groupId>
 			<artifactId>jingdata-saas-login</artifactId>
 			<version>1.1-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.mybatis.spring.boot</groupId>
+					<artifactId>mybatis-spring-boot-starter</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>redis.clients</groupId>
+					<artifactId>jedis</artifactId>
+				</exclusion>
+
+			</exclusions>
 		</dependency>
 
 

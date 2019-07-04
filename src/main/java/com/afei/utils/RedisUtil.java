@@ -28,7 +28,6 @@ public class RedisUtil {
 
 
     @Autowired
-    @Qualifier("loginRedisTemplate")
     private RedisTemplate redisTemplate;
 
     private static final Long RELEASE_SUCCESS = 1L;
