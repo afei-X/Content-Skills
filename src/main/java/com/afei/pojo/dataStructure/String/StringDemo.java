@@ -17,9 +17,8 @@ public class StringDemo {
 
         System.out.println(a.hashCode());
         System.out.println(c.hashCode());
-        System.out.println(a==b);
-        System.out.println(a==c);
-
+        System.out.println(a==b);//false
+        System.out.println(a==c);//true
 
     }
 }

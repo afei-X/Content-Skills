@@ -9,12 +9,11 @@ public class ThreadLocalDemo {
 
 
 
-    private static final ThreadLocal<Student> CURRENT_THREAD_LOCAL =new ThreadLocal<>();
+    public static final ThreadLocal<Student> CURRENT_THREAD_LOCAL =new ThreadLocal<>();
 
 
 
     public static  void main(String[] args){
-
 
         Student s = new Student();
         s.setId(10010);

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.afei.pojo.thread.threadLocal.ThreadLocalDemo.CURRENT_THREAD_LOCAL;
+
 /**
  * @author gongxiangfei
  * @describe 交叉报表请求入参特殊字符的处理
@@ -36,7 +38,7 @@ public class BiRequestFilter implements Filter {
             chain.doFilter(servletRequest, servletResponse);
         } finally {
 
-
+            CURRENT_THREAD_LOCAL.remove();
         }
 
 
