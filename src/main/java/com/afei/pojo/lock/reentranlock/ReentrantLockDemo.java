@@ -14,10 +14,6 @@ public class ReentrantLockDemo {
 
 
 
-
-
-
-
     public static void main(String[] args){
 
         ExecutorService executorService = Executors.newFixedThreadPool(2);

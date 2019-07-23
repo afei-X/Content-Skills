@@ -1,7 +1,5 @@
 package com.afei.pojo.thread;
 
-import lombok.Data;
-
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
