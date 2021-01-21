@@ -1,7 +1,5 @@
 package com.afei.controller;
 
-import org.apache.poi.poifs.filesystem.DirectoryEntry;
-import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +15,7 @@ public class ExportController {
     public void testSingle(HttpServletRequest request, HttpServletResponse response)throws Exception{
 
 
-        System.getProperties().list(System.out);
+        /*System.getProperties().list(System.out);
 
 
         String htmlStr="<head>";
@@ -39,6 +37,6 @@ public class ExportController {
         OutputStream ostream = response.getOutputStream();
         poifs.writeFilesystem(ostream);
         bais.close();
-        ostream.close();
+        ostream.close();*/
     }
 }

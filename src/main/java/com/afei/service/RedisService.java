@@ -9,5 +9,7 @@ public interface RedisService {
     /**
      * redis 测试
      */
-    Student queryList(String id);
+    Student queryList(String name);
+
+    void delete(String name);
 }

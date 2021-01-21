@@ -4,7 +4,7 @@ package com.afei.config.response;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.StringUtils;
 
 @Getter
 @Setter

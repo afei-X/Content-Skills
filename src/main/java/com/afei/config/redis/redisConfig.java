@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
@@ -15,6 +16,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 
+import java.util.Map;
+
 /**
  * @author gongxiangfei
  * @descride redis的配置类 springcache整合redis
@@ -22,6 +25,8 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
  */
 @Configuration
 @EnableCaching
+//@ConditionalOnProperty(name = "iyd.redisTemplate.isenable", havingValue = "true", matchIfMissing = false)
+@ConfigurationProperties(prefix ="spring.redis")
 public class redisConfig extends CachingConfigurerSupport {
 
 
@@ -29,10 +34,11 @@ public class redisConfig extends CachingConfigurerSupport {
     private  String prefixName;
 
 
+    private Map<String, Long> expires;
+
     @Bean
     @SuppressWarnings("rawtypes")
     public CacheManager cacheManager(RedisTemplate redisTemplate) {
-
 
         RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate);
         //设置redis的名称
@@ -42,11 +48,10 @@ public class redisConfig extends CachingConfigurerSupport {
         //设置默认的前缀
         //cacheManager.setCachePrefix(new DefaultRedisCachePrefix(prefixName));
         cacheManager.setDefaultExpiration(3000);
-
+        //自定义过期时间
+        cacheManager.setExpires(expires);
         return  cacheManager;
     }
-
-
 
     /**
      * 配置redis
@@ -76,4 +81,11 @@ public class redisConfig extends CachingConfigurerSupport {
     }*/
 
 
+    public Map<String, Long> getExpires() {
+        return expires;
+    }
+
+    public void setExpires(Map<String, Long> expires) {
+        this.expires = expires;
+    }
 }

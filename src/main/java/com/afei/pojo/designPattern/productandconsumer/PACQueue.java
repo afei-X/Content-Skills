@@ -1,9 +1,6 @@
 package com.afei.pojo.designPattern.productandconsumer;
 
-import com.google.common.collect.Queues;
 
-import javax.print.attribute.standard.RequestingUserName;
-import java.util.Queue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;

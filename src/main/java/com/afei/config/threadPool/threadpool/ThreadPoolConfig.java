@@ -1,7 +1,6 @@
 package com.afei.config.threadPool.threadpool;
 
 import com.alibaba.rocketmq.common.ThreadFactoryImpl;
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.*;
@@ -28,14 +27,14 @@ public class ThreadPoolConfig {
     private static BlockingQueue<Runnable> queue = new ArrayBlockingQueue<Runnable>(2);
 
 
-    //ThreadFactory threadFactory = new ThreadFactoryImpl("first-pool-%d");
+    ThreadFactory threadFactory = new ThreadFactoryImpl("first-pool-%d");
 
     /**
      * Executors 的内部类
      */
     //ThreadFactory threadFactory = Executors.defaultThreadFactory();
 
-    private  final ThreadFactory threadFactory = new ThreadFactoryBuilder().setNameFormat("first-pool-%d").build();
+   // private  final ThreadFactory threadFactory = new ThreadFactoryBuilder().setNameFormat("first-pool-%d").build();
 
 
     private ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, KEEP_ALIVE_TIME,

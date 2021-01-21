@@ -4,7 +4,6 @@ package com.afei.config.response;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.apache.poi.ss.formula.functions.T;
 
 import static com.afei.config.response.ReturnCode.RETURN_CODE_0;
 import static com.afei.config.response.ReturnCode.RETURN_CODE_500;
@@ -13,13 +12,13 @@ import static com.afei.config.response.ReturnCode.RETURN_CODE_500;
 @Setter
 @Getter
 @ToString
-public class ResponseResult  {
+public class ResponseResult<T>  {
 
     private int code;
 
     private String message;
 
-    private T result;
+    private  T result;
 
     public static final ResponseResult SUCCESS = new ResponseResult(RETURN_CODE_0.getCode(),"success");
     public static final ResponseResult FAIL = new ResponseResult(RETURN_CODE_500.getCode(),"fail");
@@ -42,16 +41,16 @@ public class ResponseResult  {
         return new ResponseResult(RETURN_CODE_0.getCode(),message);
     }
 
-    public static ResponseResult success (T result) {
+    public static <T>ResponseResult success (T result) {
         return new ResponseResult(RETURN_CODE_0.getCode(),"success",result);
     }
 
-    public static ResponseResult success (T result,String message) {
+    public static <T>ResponseResult success (T result,String message) {
         if(message == null) message = RETURN_CODE_0.getMsg();
         return new ResponseResult(RETURN_CODE_0.getCode(),message,result);
     }
 
-    public static ResponseResult fail (T result,String message) {
+    public static <T>ResponseResult fail (T result,String message) {
         return new ResponseResult(RETURN_CODE_500.getCode(),message,result);
     }
 
@@ -74,7 +73,7 @@ public class ResponseResult  {
     }
 
 
-    public static ResponseResult fail(int code, String msg, T result) {
+    public static <T>ResponseResult fail(int code, String msg, T result) {
         return new ResponseResult(code, msg, result);
     }
 

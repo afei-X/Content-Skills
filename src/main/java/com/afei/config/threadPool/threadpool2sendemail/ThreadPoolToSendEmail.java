@@ -1,7 +1,6 @@
 package com.afei.config.threadPool.threadpool2sendemail;
 
 
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
 import java.util.concurrent.*;
 
@@ -17,10 +16,10 @@ public class ThreadPoolToSendEmail {
     public  static ThreadPoolExecutor getThreadPoolExecutor(){
 
 
-        ThreadFactory factory = new ThreadFactoryBuilder().setNameFormat("email-pool-%d").build();
+        //ThreadFactory factory = new ThreadFactoryBuilder().setNameFormat("email-pool-%d").build();
 
         return new ThreadPoolExecutor(30, 50, 60L, TimeUnit.SECONDS,
-                new LinkedBlockingQueue<>(200),factory);
+                new LinkedBlockingQueue<>(200));
 
 
     }

@@ -3,7 +3,9 @@ package com.afei.service.impl;
 import com.afei.pojo.entity.Student;
 import com.afei.pojo.entity.User;
 import com.afei.service.RedisService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -15,29 +17,26 @@ import java.util.List;
  * @descride redis的操作
  * @dataTime 2018-11-03
  */
-@CacheConfig(cacheNames = "redis_test_")
+@CacheConfig(cacheNames = "cacheConfig")
 @Service
 public class RedisAnnocation implements RedisService {
 
 
-
-
-    @Cacheable(key = "#p0")
+    @Cacheable(value = "cache",key = "#p0")
     @Override
-    public Student queryList(String id){
+    public Student queryList(String name){
 
-        //List<Student> list = new ArrayList<>();
-
+        System.out.println(name);
         Student s = new Student();
         s.setId(1);
         s.setFieldName("first-bllod");
-        //list.add(s);
-
-return s;
-
-
-
+        s.setName(name);
+        return s;
     }
 
+    @CacheEvict(value = "cache",key = "#p0")
+    @Override
+    public void delete(String name) {
 
+    }
 }

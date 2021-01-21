@@ -80,9 +80,11 @@ public class JsonTest {
         @Test
          public void test2()throws Exception{
 
-            Double seq = new Student().getSwq();
 
-            Double s=seq;
+            String str="{\"fieldName\":\"afei\",\"swq\":1.2,\"age\":12}";
+
+            Student student = JSONObject.parseObject(str, Student.class);
+
 
 
 

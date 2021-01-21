@@ -1,0 +1,11 @@
+spring:
+    application:
+        name: content
+    profiles:
+        active: ${profileActive}
+    #cloud:
+    #    config:
+    #        uri: ${configUrl}
+    #        profile: ${profileActive}
+    #        label: master
+    #        fail-fast: true
