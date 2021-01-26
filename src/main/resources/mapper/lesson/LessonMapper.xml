@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.afei.mapper.LessonMapper">
+    <resultMap id="BaseResultMap" type="com.afei.pojo.entity.Lesson">
+        <id column="id" jdbcType="INTEGER" property="id" />
+
+    </resultMap>
+    <insert id="insert" parameterType="com.afei.pojo.entity.Lesson">
+
+        insert into t_lesson value (#{id},#{score})
+
+
+    </insert>
+    <update id="update"   parameterType="com.afei.pojo.entity.Lesson">
+        update t_lesson
+        set score=#{score}
+
+        where id=#{id}
+
+
+
+    </update>
+
+
+</mapper>
