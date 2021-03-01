@@ -1,6 +1,6 @@
 package com.afei.config.annotation;
 
-import com.afei.config.aspect.StudentService;
+import com.afei.service.StudentService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

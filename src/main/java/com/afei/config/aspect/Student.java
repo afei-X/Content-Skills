@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class Student {
 
-    @Pointcut("execution(* com.afei.config.aspect.StudentServiceImpl.show(..))")
+    @Pointcut("execution(* com.afei.service.impl.StudentServiceImpl.show(..))")
     public void show(){}
 
 

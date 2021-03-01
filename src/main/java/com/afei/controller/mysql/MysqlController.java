@@ -1,6 +1,5 @@
 package com.afei.controller.mysql;
 
-import com.afei.pojo.entity.Animal;
 import com.afei.pojo.entity.Lesson;
 import com.afei.pojo.entity.Student;
 import com.afei.service.DbQueryService;
@@ -20,12 +19,6 @@ public class MysqlController {
     private DbQueryService service;
 
 
-    @Autowired
-    private LessonService lessonService;
-
-
-
-
 
     @GetMapping(value = "/query")
     public Student query(Integer id){
@@ -33,14 +26,5 @@ public class MysqlController {
        return service.query(id);
 
     }
-
-
-
-    @GetMapping(value = "/insert")
-    public  void insert(){
-
-
-    }
-
 
 }

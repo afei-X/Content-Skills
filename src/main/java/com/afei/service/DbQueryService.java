@@ -10,7 +10,7 @@ import com.afei.pojo.entity.Student;
  */
 public interface DbQueryService {
 
-    void insert(Student student);
+    void insert();
 
 
     /**

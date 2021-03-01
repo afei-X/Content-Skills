@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.afei.mapper.StudentMapper">
+    <resultMap id="BaseResultMap" type="com.afei.pojo.entity.Student">
+        <id column="id" jdbcType="INTEGER" property="id" />
+
+    </resultMap>
+    <select id="queryStudent" resultType="com.afei.pojo.entity.Student">
+
+        select * from t_student where id=#{id}
+
+    </select>
+
+    <insert id="insert">
+
+        insert into t_student values (#{id},#{name})
+
+
+    </insert>
+
+</mapper>
